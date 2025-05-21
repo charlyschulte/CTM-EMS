@@ -29,4 +29,4 @@ chmod 644 /app/.env
 
 bashio::log.info "Starting CTM Energy Management System..."
 
-bun dist/index.js
+bun /app/dist/index.js
