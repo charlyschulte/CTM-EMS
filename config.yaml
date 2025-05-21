@@ -21,9 +21,8 @@ options:
   tibber_api_key: ""
   tibber_api_url: "https://api.tibber.com/v1-beta/gql"
 schema:
-
   POSTGRES_HOST: str
-  POSTGRES_PORT: str
+  POSTGRES_PORT: int
   POSTGRES_USER: str
   POSTGRES_DB: str
   POSTGRES_PASSWORD: str
