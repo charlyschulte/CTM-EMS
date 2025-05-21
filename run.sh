@@ -1,32 +1,25 @@
-#!/usr/bin/with-contenv bashio
+#!/bin/sh
 set -e
 
-# Get configuration values from config.yaml
-POSTGRES_HOST=$(bashio::config 'POSTGRES_HOST')
-POSTGRES_PORT=$(bashio::config 'POSTGRES_PORT')
-POSTGRES_DB=$(bashio::config 'POSTGRES_DB')
-POSTGRES_USER=$(bashio::config 'POSTGRES_USER')
-POSTGRES_PASSWORD=$(bashio::config 'POSTGRES_PASSWORD')
-TIBBER_API_KEY=$(bashio::config 'tibber_api_key')
-TIBBER_API_URL=$(bashio::config 'tibber_api_url')
+# Using environment variables directly instead of bashio
+# Default values can be specified with ${VAR:-default}
+echo "Creating configuration file for CTM Energy Management System..."
 
-bashio::log.info "Creating configuration file for CTM Energy Management System..."
-
-# Create .env file or config.js file for the Node.js application
-cat > /app/.env << EOF
-POSTGRES_HOST=${POSTGRES_HOST}
-POSTGRES_PORT=${POSTGRES_PORT}
-POSTGRES_DB=${POSTGRES_DB}
-POSTGRES_USER=${POSTGRES_USER}
-POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-TIBBER_API_KEY=${TIBBER_API_KEY}
-TIBBER_API_URL=${TIBBER_API_URL}
-NODE_ENV=production
-EOF
+# Create .env file for the Node.js application using environment variables
+{
+  echo "POSTGRES_HOST=${POSTGRES_HOST:-localhost}"
+  echo "POSTGRES_PORT=${POSTGRES_PORT:-5432}"
+  echo "POSTGRES_DB=${POSTGRES_DB:-ctm_db}"
+  echo "POSTGRES_USER=${POSTGRES_USER:-postgres}"
+  echo "POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}"
+  echo "TIBBER_API_KEY=${TIBBER_API_KEY}"
+  echo "TIBBER_API_URL=${TIBBER_API_URL:-https://api.tibber.com/v1-beta/gql}"
+  echo "NODE_ENV=${NODE_ENV:-production}"
+} > /app/.env
 
 # Make sure the configuration is accessible
 chmod 644 /app/.env
 
-bashio::log.info "Starting CTM Energy Management System..."
+echo "Starting CTM Energy Management System..."
 
 bun /app/dist/index.js

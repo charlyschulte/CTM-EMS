@@ -17,5 +17,8 @@ COPY . .
 # Build the application
 RUN bun run build
 
-# Change the CMD instruction to correctly run the index.js file
-CMD ["run.sh"]
+# Make the run script executable
+RUN chmod +x run.sh
+
+# Use shell to execute the run script
+CMD ["/bin/sh", "run.sh"]
