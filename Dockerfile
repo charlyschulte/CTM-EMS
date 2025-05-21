@@ -17,4 +17,5 @@ COPY . .
 # Build the application
 RUN bun run build
 
-CMD ["bun ./dist/index.js"]
+# Change the CMD instruction to correctly run the index.js file
+CMD ["bun", "./dist/index.js"]
