@@ -6,7 +6,7 @@
     "@types/bun": "latest"
   },
   "scripts": {
-    "build": "bun build --outdir dist --target node16 --format cjs --minify",
+    "build": "bun build index.ts --outdir dist --format cjs --minify --external typeorm --external sqlite3 --external pg",
     "start": "bun run build && bun run start:prod",
     "start:prod": "node dist/index.js",
     "lint": "eslint .",
@@ -20,13 +20,12 @@
     "@types/express": "^5.0.2",
     "@types/pg": "^8.15.2",
     "axios": "^1.9.0",
+    "buffer": "^6.0.3",
     "cron": "^4.3.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "graphql-request": "^7.1.2",
-    "node-fetch": "^3.3.2",
     "pg": "^8.16.0",
-    "reflect-metadata": "^0.2.2",
     "sqlite3": "^5.1.7",
     "typeorm": "^0.3.24"
   }
