@@ -1,20 +1,4 @@
-ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base:3.18
-
-FROM ${BUILD_FROM}
-
-# Set shell
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
-# Install required packages
-RUN apk add --no-cache \
-    nodejs \
-    npm \
-    unzip \
-    curl
-
-# Install Bun
-RUN curl -fsSL https://bun.sh/install | bash
-ENV PATH="/root/.bun/bin:${PATH}"
+FROM oven/bun:latest
 
 # Set working directory
 WORKDIR /app
