@@ -1,6 +1,6 @@
 name: "CTM Energy Management System"
 description: "Energy Management System with Tibber API integration"
-version: "1.0.2"
+version: "1.0.3"
 slug: "ctm_ems"
 init: false
 arch:
@@ -13,6 +13,11 @@ startup: services
 ports:
   8080/tcp: 8080
 options:
+  POSTGRES_HOST: ""
+  POSTGRES_PORT: ""
+  POSTGRES_DB: ""
+  POSTGRES_USER: ""
+  POSTGRES_PASSWORD: ""
   tibber_api_key: ""
   tibber_api_url: "https://api.tibber.com/v1-beta/gql"
 schema:
