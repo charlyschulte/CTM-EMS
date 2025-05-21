@@ -6,11 +6,15 @@ CTM-EMS is an Energy Management System that integrates with the Tibber API to fe
 
 ## Installation
 
-1. Navigate to the Home Assistant Add-on Store
-2. Add this repository as a new repository
-3. Find and install the "CTM Energy Management System" add-on
-4. Configure your Tibber API key
-5. Start the add-on
+1. Navigate to your Home Assistant instance
+2. Go to Settings → Add-ons → Add-on Store
+3. Click on the menu in the top right corner (three dots)
+4. Select "Repositories"
+5. Add the URL: `https://github.com/charlyschulte/CTM-EMS`
+6. Click "Add"
+7. Find and install the "CTM Energy Management System" add-on
+8. Configure your Tibber API key
+9. Start the add-on
 
 ## Configuration
 

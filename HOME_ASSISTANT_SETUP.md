@@ -1,19 +1,16 @@
 # CTM-EMS Home Assistant Add-on
 
-To set up your project as a Home Assistant add-on, you need to follow these steps:
+To set up this project as a Home Assistant add-on, you need to follow these steps:
 
-## Create Home Assistant Add-on Repository
+## Add the Repository to Home Assistant
 
-1. Create a directory for your add-on in your Home Assistant add-on directory:
-   - For example: `/addons/ctm-ems`
-
-2. Copy the following files from your project to the add-on directory:
-   - `Dockerfile`
-   - `config.yaml`
-   - `build.yaml`
-   - `run.sh`
-   - `ADDON.md` (as README.md in the add-on directory)
-   - All your project files
+1. Navigate to your Home Assistant instance.
+2. Go to Settings → Add-ons → Add-on Store.
+3. Click on the menu in the top right corner (three dots).
+4. Select "Repositories".
+5. Add the following URL: `https://github.com/charlyschulte/CTM-EMS`
+6. Click "Add".
+7. The repository should now appear in your add-on store.
 
 ## Add-on Structure
 

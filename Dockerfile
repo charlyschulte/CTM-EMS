@@ -17,14 +17,4 @@ COPY . .
 # Build the application
 RUN bun run build
 
-# Set up persistent data directory
-RUN mkdir -p /app
-
-# Copy data from the application's data folder to the persistent directory
-COPY ./ /app
-
-# Copy scripts
-COPY run.sh /
-RUN chmod a+x /run.sh
-
-CMD ["/run.sh"]
+CMD ["bun ./dist/index.js"]
