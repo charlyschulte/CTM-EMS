@@ -1,6 +1,6 @@
 name: "CTM Energy Management System"
 description: "Energy Management System with Tibber API integration"
-version: "1.0.1"
+version: "1.0.2"
 slug: "ctm_ems"
 init: false
 arch:
