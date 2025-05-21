@@ -21,7 +21,7 @@ RUN bun run build
 RUN mkdir -p /app
 
 # Copy data from the application's data folder to the persistent directory
-COPY app /app
+COPY ./ /app
 
 # Copy scripts
 COPY run.sh /
