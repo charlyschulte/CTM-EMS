@@ -1,12 +1,12 @@
 {
   "name": "tibber-battery-optimizer",
   "module": "index.ts",
-  "type": "module",
+  "type": "commonjs",
   "devDependencies": {
     "@types/bun": "latest"
   },
   "scripts": {
-    "build": "bun build index.ts --outdir dist --format cjs --minify --external typeorm --external sqlite3 --external pg",
+    "build": "bun build index.ts --outdir dist --external typeorm",
     "start": "bun run build && bun run start:prod",
     "start:prod": "node dist/index.js",
     "lint": "eslint .",
