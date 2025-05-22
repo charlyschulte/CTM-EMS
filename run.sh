@@ -9,13 +9,13 @@ if [ -f "/usr/bin/bashio" ] && [ -d "/data" ]; then
     echo "Creating configuration file for CTM Energy Management System..."
 
     # Get configuration values from config.yaml using bashio CLI
-    POSTGRES_HOST="$(/usr/bin/bashio config POSTGRES_HOST)"
-    POSTGRES_PORT="$(/usr/bin/bashio config POSTGRES_PORT)"
-    POSTGRES_DB="$(/usr/bin/bashio config POSTGRES_DB)"
-    POSTGRES_USER="$(/usr/bin/bashio config POSTGRES_USER)"
-    POSTGRES_PASSWORD="$(/usr/bin/bashio config POSTGRES_PASSWORD)"
-    TIBBER_API_KEY="$(/usr/bin/bashio config tibber_api_key)"
-    TIBBER_API_URL="$(/usr/bin/bashio config tibber_api_url)"
+    POSTGRES_HOST="$(/usr/bin/bashio config:get POSTGRES_HOST)"
+    POSTGRES_PORT="$(/usr/bin/bashio config:get POSTGRES_PORT)"
+    POSTGRES_DB="$(/usr/bin/bashio config:get POSTGRES_DB)"
+    POSTGRES_USER="$(/usr/bin/bashio config:get POSTGRES_USER)"
+    POSTGRES_PASSWORD="$(/usr/bin/bashio config:get POSTGRES_PASSWORD)"
+    TIBBER_API_KEY="$(/usr/bin/bashio config:get tibber_api_key)"
+    TIBBER_API_URL="$(/usr/bin/bashio config:get tibber_api_url)"
     NODE_ENV="production"
 else
     # Fallback for Docker environments
