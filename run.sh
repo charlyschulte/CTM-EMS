@@ -1,7 +1,7 @@
-#!/usr/bin/env bashio
+#!/usr/bin/with-contenv bashio
 
 # Check if we're running in Home Assistant environment
-if bashio::fs.file_exists "/usr/bin/bashio" && bashio::fs.directory_exists "/data"; then
+if [ -f "/usr/bin/bashio" ] && [ -d "/data" ]; then
     bashio::log.info "Running in Home Assistant environment"
     
     # Load configuration using Home Assistant Bashio
@@ -45,9 +45,17 @@ fi
 
 # Make sure the configuration is accessible
 chmod 777 /app/.env
-bashio::log.info "ENV file created:"
+if [ -f "/usr/bin/bashio" ] && [ -d "/data" ]; then
+    bashio::log.info "ENV file created:"
+else
+    echo "ENV file created:"
+fi
 cat /app/.env
 
-bashio::log.info "Starting CTM Energy Management System..."
+if [ -f "/usr/bin/bashio" ] && [ -d "/data" ]; then
+    bashio::log.info "Starting CTM Energy Management System..."
+else
+    echo "Starting CTM Energy Management System..."
+fi
 
 bun /app/dist/index.js

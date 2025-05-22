@@ -1,4 +1,4 @@
-FROM ghcr.io/hassio-addons/base-nodejs:latest
+FROM ghcr.io/hassio-addons/base-nodejs:stable
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
