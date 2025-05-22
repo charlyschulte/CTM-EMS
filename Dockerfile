@@ -1,4 +1,7 @@
-FROM ghcr.io/hassio-addons/base-nodejs:stable
+FROM ghcr.io/hassio-addons/base-nodejs:latest
+
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Set working directory
 WORKDIR /app
@@ -25,5 +28,5 @@ RUN bun run build
 # Make the run script executable
 RUN chmod +x run.sh
 
-# Use shell to execute the run script
-CMD ["/bin/sh", "run.sh"]
+# Use bashio to execute the run script
+CMD ["/bin/bash", "run.sh"]
