@@ -1,9 +1,12 @@
 FROM ghcr.io/hassio-addons/base-nodejs:stable
-#FROM oven/bun:latest
 
 # Set working directory
 WORKDIR /app
-curl -fsSL https://bun.sh/install | bash
+
+# Install Bun
+RUN curl -fsSL https://bun.sh/install | bash && \
+    mv /root/.bun/bin/bun /usr/local/bin/bun && \
+    chmod +x /usr/local/bin/bun
 
 # Copy package.json first for better layer caching
 COPY package.json .
