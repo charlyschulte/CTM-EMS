@@ -6,7 +6,7 @@
     "@types/bun": "latest"
   },
   "scripts": {
-    "build": "bun build index.ts --outdir dist --external typeorm",
+    "build": "bun build index.ts --outdir dist --target bun",
     "start": "bun run build && bun run start:prod",
     "start:prod": "node dist/index.js",
     "lint": "eslint .",
