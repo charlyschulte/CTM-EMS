@@ -1,21 +1,20 @@
-#!/bin/sh
-set -e
+#!/usr/bin/env bashio
 
 # Check if we're running in Home Assistant environment
-if [ -f "/usr/bin/bashio" ] && [ -d "/data" ]; then
-    echo "Running in Home Assistant environment"
+if bashio::fs.file_exists "/usr/bin/bashio" && bashio::fs.directory_exists "/data"; then
+    bashio::log.info "Running in Home Assistant environment"
     
-    # Load configuration using Home Assistant CLI tool
-    echo "Creating configuration file for CTM Energy Management System..."
+    # Load configuration using Home Assistant Bashio
+    bashio::log.info "Creating configuration file for CTM Energy Management System..."
 
-    # Get configuration values from config.yaml using bashio CLI
-    POSTGRES_HOST="$(/usr/bin/bashio config:get POSTGRES_HOST)"
-    POSTGRES_PORT="$(/usr/bin/bashio config:get POSTGRES_PORT)"
-    POSTGRES_DB="$(/usr/bin/bashio config:get POSTGRES_DB)"
-    POSTGRES_USER="$(/usr/bin/bashio config:get POSTGRES_USER)"
-    POSTGRES_PASSWORD="$(/usr/bin/bashio config:get POSTGRES_PASSWORD)"
-    TIBBER_API_KEY="$(/usr/bin/bashio config:get tibber_api_key)"
-    TIBBER_API_URL="$(/usr/bin/bashio config:get tibber_api_url)"
+    # Get configuration values from config.yaml using bashio
+    POSTGRES_HOST=$(bashio::config 'POSTGRES_HOST')
+    POSTGRES_PORT=$(bashio::config 'POSTGRES_PORT')
+    POSTGRES_DB=$(bashio::config 'POSTGRES_DB')
+    POSTGRES_USER=$(bashio::config 'POSTGRES_USER')
+    POSTGRES_PASSWORD=$(bashio::config 'POSTGRES_PASSWORD')
+    TIBBER_API_KEY=$(bashio::config 'tibber_api_key')
+    TIBBER_API_URL=$(bashio::config 'tibber_api_url')
     NODE_ENV="production"
 else
     # Fallback for Docker environments
@@ -46,9 +45,9 @@ fi
 
 # Make sure the configuration is accessible
 chmod 777 /app/.env
-echo "ENV file created:"
+bashio::log.info "ENV file created:"
 cat /app/.env
 
-echo "Starting CTM Energy Management System..."
+bashio::log.info "Starting CTM Energy Management System..."
 
 bun /app/dist/index.js
