@@ -1,10 +1,10 @@
-#!/usr/bin/env bashio
+#!/usr/bin/with-contenv bashio
 # shellcheck shell=bash
 set -e
 
 # Check if we're running in Home Assistant environment
 if command -v bashio >/dev/null 2>&1; then
-    bashio::log.info "Creating configuration file for CTM Energy Management System..."
+    #bashio::log.info "Creating configuration file for CTM Energy Management System..."
 
     # Get configuration values from config.yaml using bashio
     POSTGRES_HOST=$(bashio::config 'POSTGRES_HOST')
@@ -48,7 +48,7 @@ echo "ENV file created:"
 cat /app/.env
 
 if command -v bashio >/dev/null 2>&1; then
-    bashio::log.info "Starting CTM Energy Management System..."
+   # bashio::log.info "Starting CTM Energy Management System..."
 else
     echo "Starting CTM Energy Management System..."
 fi
