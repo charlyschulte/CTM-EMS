@@ -1,7 +1,22 @@
-FROM ghcr.io/hassio-addons/base-nodejs:stable
+FROM ghcr.io/hassio-addons/base:latest
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# Set S6 wait time
+ENV S6_CMD_WAIT_FOR_SERVICES=1 \
+    S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0 \
+    S6_SERVICES_GRACETIME=0
+
+# Install required packages
+RUN \
+    apk add --no-cache \
+        nodejs \
+        npm \
+        curl \
+        unzip \
+        git \
+    && npm install -g npm@latest
 
 # Set working directory
 WORKDIR /app
